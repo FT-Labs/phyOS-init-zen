@@ -1,0 +1,1 @@
+root UUID=56eb855b-acea-4114-b6fa-69bec9fc8fcb 1dd5c5bb luks,discard,keyscript=/bin/luksunlock

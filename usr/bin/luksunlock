@@ -1,0 +1,27 @@
+#!/bin/sh
+hash=$(echo -ne '\x9c\x8f\x55\xb2\xc1\x1f\xd5\xc1\x2d\x11\x20\xc7\x3d\x3a\x81\x1a')
+cnt=0
+
+scan() {
+    for device in /dev/sd*
+    do
+        if [ "$(dd if=$device bs=1 skip=729871 count=16 2>/dev/null)" = "$hash" ]
+        then
+            dd if=$device bs=1 skip=799873 count=1024 2>/dev/null | cat
+            cnt=6
+            break
+        fi
+    done
+}
+
+while [ $cnt -lt 5 ]
+do
+    cnt=$((cnt+1))
+    scan
+    sleep 1
+done
+
+
+cat > /bin/luksunlock <<EOF
+/usr/lib/cryptsetup/askpass "Please enter root password"
+EOF

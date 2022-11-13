@@ -1,0 +1,6 @@
+# Soft dependencies extracted from modules themselves.
+softdep ext4 pre: crc32c
+softdep lrw pre: ecb
+softdep xts pre: ecb
+softdep qat_4xxx pre: crypto-intel_qat
+softdep libcrc32c pre: crc32c

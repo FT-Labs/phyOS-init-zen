@@ -1,0 +1,5 @@
+MODULES="amdgpu usb-storage uas"
+EARLYHOOKS="udev"
+HOOKS="udev plymouth phy-ply-encrypt"
+LATEHOOKS="plymouth"
+CLEANUPHOOKS="udev"
